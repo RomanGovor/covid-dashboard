@@ -1,0 +1,20 @@
+{
+  "name": "covid-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "style": "sass --watch src/sass/style.scss src/sass/style.css\n"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomanGovor/covid-dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomanGovor/covid-dashboard/issues"
+  },
+  "homepage": "https://github.com/RomanGovor/covid-dashboard#readme"
+}
