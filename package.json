@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development",
+    "dev": "webpack serve --open firefox",
     "prod": "webpack --mode production",
     "lint": "eslint --fix --ext .js,.jsx ."
   },

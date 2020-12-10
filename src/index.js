@@ -1,3 +1,3 @@
-console.log('настройка всего');
+configconsole.log('настройка всего');
 const e = 4;
 console.log('43543');

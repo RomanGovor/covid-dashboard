@@ -31,7 +31,8 @@ module.exports = (env, options) => {
     watch: !isProduction,
     entry: ['./src/index.js', './src/sass/style.scss'],
     output: {
-      publicPath: ASSET_PATH,
+      // publicPath: ASSET_PATH,
+      publicPath: '',
       path: path.join(__dirname, '/dist'),
       filename: 'script.js',
     },
@@ -83,6 +84,13 @@ module.exports = (env, options) => {
     //   compress: true,
     //   port: 4200
     // },
+    devServer: {
+      compress: true,
+      port: 8081,
+      overlay: true,
+      hot: !isProduction,
+      // open: 'chrome', // ?
+    },
 
     plugins: [
       new webpack.DefinePlugin({
@@ -96,7 +104,7 @@ module.exports = (env, options) => {
       //         concurrency: 100,
       //     },
       // }),
-      // new CleanWebpackPlugin(),
+      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './index.html',
       }),
