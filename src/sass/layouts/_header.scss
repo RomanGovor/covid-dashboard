@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  max-width: $content-width;
+  padding: 0 79px 0 79px;
+
+  &__menu {
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 2rem;
+    line-height: initial;
+    padding: 0
+  }
+
+  &__switch {
+    position: relative;
+    @include size(121px,40px);
+    border-radius: 25px;
+    top: 16px;
+  }
+
+  .overflow-normal {
+    overflow: auto;
+  }
+}
+
+@media (max-width: $content-little-width) {
+  .header {
+    padding: 0 10px;
+    .title {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: $content-smallest-width) {
+  .header {
+    .title {
+      font-size: 1.2rem;
+    }
+
+    &__switch {
+      transform: scale(0.75);
+      position: inherit;
+      bottom: 10px;
+    }
+  }
+}

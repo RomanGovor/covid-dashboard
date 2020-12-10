@@ -8,8 +8,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,500;0,800;1,100;1,200;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Тут вся инфа и все что с ней связано)</h1>
+<div class="wrap">
+    <header class="wrapper">
+        <div class="header">
+            <div></div>
+            <div class="header__logo">
+                <h1 class="title">Covid-19 Dashboard</h1>
+            </div>
+            <div class="header__menu">
+                <div class="burger-menu">
+                    <input type="checkbox" id="hmt" class="burger-menu__checkbox-input">
+                    <label class="burger-menu__lines" for="hmt">
+                        <div class="line line-1"></div>
+                        <div class="line line-2"></div>
+                        <div class="line line-3"></div>
+                    </label>
+                    <div class="header__menu-list">
+                        <ul class="menu-list-ul">
+                            <li class="menu__item active-item">Smt info 1</li>
+                            <li class="menu__item">Smt info 2</li>
+                            <li class="menu__item">Smt info 3</li>
+                            <li class="menu__item">Smt info 4</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>Тут будут блоки</main>
 
+    <div class="background">
+        <label class="background__burger" for="hmt"></label>
+    </div>
+    <footer>
+        <div class="footer wrapper">
+            <div class="footer__author">
+                <a href="https://github.com/RomanGovor" target="#">Author 1</a>
+                <a href="https://github.com/ssamvelk" target="#">Author 2</a>
+            </div>
+            <div class="footer__logo"><img src="src/assets/icons/rs_school_js.svg" alt="rs-logo"></div>
+            <div class="footer__courses"><a href="https://rs.school/js/" target="#">JS courses</a></div>
+        </div>
+    </footer>
+</div>
     <script src="src/index.js"></script>
 </body>
 </html>

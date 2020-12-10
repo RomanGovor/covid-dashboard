@@ -1,8 +1,11 @@
-body {
-  background: deepskyblue;
-}
+@import "abstracts/constants";
+@import "abstracts/mixins";
 
-h1 {
-  background: antiquewhite;
-  color: red;
-}
+@import "base/base";
+@import "base/burger";
+
+@import "layouts/header";
+@import "layouts/wrapper";
+@import "layouts/footer";
+
+@import "components/menu-list";

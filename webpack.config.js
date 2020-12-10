@@ -79,17 +79,12 @@ module.exports = (env, options) => {
       ],
     },
 
-    // devServer: {
-    //   contentBase: path.join(__dirname, 'dist'),
-    //   compress: true,
-    //   port: 4200
-    // },
     devServer: {
       compress: true,
       port: 8081,
       overlay: true,
       hot: !isProduction,
-      // open: 'chrome', // ?
+      // open: 'chrome',
     },
 
     plugins: [

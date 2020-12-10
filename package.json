@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --open firefox",
+    "serve": "webpack serve --open chrome",
+    "dev": "webpack serve --open chrome",
     "prod": "webpack --mode production",
     "lint": "eslint --fix --ext .js,.jsx ."
   },
