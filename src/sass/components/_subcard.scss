@@ -1,0 +1,94 @@
+.subcard {
+  height: 100%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: $color-blue;
+  margin: 10px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__title,
+    &__number {
+      line-height: 60px;
+    }
+
+    &__title {
+      font-size: 2rem;
+      color: $color-light;
+    }
+
+    &__number {
+      font-weight: bold;
+      font-size: 3rem;
+      color: $color-red;
+    }
+  }
+}
+
+@media (max-width: $content-big-width) {
+  .subcard .content{
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__number {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+@media (max-width: $content-hd-width) {
+  .subcard .content{
+    &__title {
+      font-size: 1.2rem;
+    }
+
+    &__number {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media (max-width: $content-middle-width) {
+  .subcard .content{
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__number {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+@media (max-width: $content-little-width) {
+  .subcard .content{
+    &__title {
+      font-size: 1.1rem;
+    }
+
+    &__number {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media (max-width: $content-smallest-width) {
+  .subcard .content {
+    &__title {
+      font-size: 0.9rem;
+    }
+
+    &__number {
+      font-size: 1.2rem;
+    }
+  }
+}

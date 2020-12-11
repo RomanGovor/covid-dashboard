@@ -1,0 +1,66 @@
+.container {
+  position: relative;
+  //width: calc(100% - 58px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 10px 50px 10px;
+
+  &__world {
+    width: 19%;
+    background: $color-yellow;
+  }
+
+  &__map {
+    width: 49%;
+    background: $color-red;
+  }
+
+  &__statistics {
+    width: 29%;
+    background: $color-violet;
+  }
+
+  &__global {
+    height: 30%;
+  }
+
+  &__graphics {
+    height: 90%;
+  }
+}
+
+@media (max-width: $content-middle-width) {
+  .container {
+    &__world {
+      width: 29%;
+    }
+
+    &__map {
+      width: 69%;
+    }
+
+    &__statistics {
+      margin: 0 auto;
+      width: 70%;
+      margin-top: -20px;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+@media (max-width: $content-little-width) {
+  .container {
+    &__global {
+      height: 20%;
+    }
+  }
+}
+
+@media (max-width: $content-smallest-width) {
+  .container {
+    width: auto;
+    padding: 0 29px;
+  }
+}

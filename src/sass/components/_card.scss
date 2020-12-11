@@ -1,0 +1,41 @@
+.card {
+  position: relative;
+  width: calc(100% / 3 - 10px);
+  margin-bottom: 10px;
+  height: 580px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: #4DADF7;
+}
+
+@media (max-width: $content-big-width) {
+  .card {
+    //width: calc(100% / 3 - 25px);
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: $content-middle-width) {
+  .card {
+    width: calc(100% / 2 - 10px);
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: $content-little-width) {
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    .description {
+      padding: 0 10px;
+    }
+  }
+}

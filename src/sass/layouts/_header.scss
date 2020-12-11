@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 110px;
+  height: 68px;
   max-width: $content-width;
-  padding: 0 79px 0 79px;
+  padding: 0 59px;
 
   &__menu {
     cursor: pointer;
@@ -31,16 +31,13 @@
 @media (max-width: $content-little-width) {
   .header {
     padding: 0 10px;
-    .title {
-      font-size: 1.5rem;
-    }
   }
 }
 
 @media (max-width: $content-smallest-width) {
   .header {
     .title {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
 
     &__switch {
