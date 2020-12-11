@@ -2,17 +2,16 @@
   height: 100%;
   transition: all 0.5s ease;
   cursor: pointer;
-  perspective: 1000px;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  background: $color-blue;
+  border-radius: 3px;
+  background: $color-subcard;
   margin: 10px;
 
   .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
 
     &__title,
@@ -20,16 +19,33 @@
       line-height: 60px;
     }
 
+    &__small-title,
     &__title {
+      text-align: center;
       font-size: 2rem;
       color: $color-light;
     }
 
+    &__small-title {
+      padding-top: 10px;
+      font-size: 1rem;
+    }
+
     &__number {
       font-weight: bold;
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: $color-red;
     }
+
+    &__list {
+      margin-top: 5px;
+      color: $color-light;
+      height: 90%;
+    }
+  }
+
+  .color-blue {
+    color: $color-blue;
   }
 }
 

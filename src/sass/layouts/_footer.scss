@@ -22,6 +22,11 @@ footer {
     cursor: pointer;
   }
 
+  &__author {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__author > a,
   &__courses > a {
     text-decoration: none;

@@ -1,24 +1,25 @@
 .container {
   position: relative;
-  //width: calc(100% - 58px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 0 10px 50px 10px;
+  padding: 0 5px 50px 5px;
+  justify-content: center;
 
   &__world {
-    width: 19%;
+    word-break: break-all;
+    width: 20%;
     background: $color-yellow;
   }
 
   &__map {
-    width: 49%;
+    width: 50%;
     background: $color-red;
   }
 
   &__statistics {
-    width: 29%;
+    width: 30%;
     background: $color-violet;
   }
 
@@ -28,6 +29,58 @@
 
   &__graphics {
     height: 90%;
+    margin-top: 20px;
+  }
+
+  &__countries {
+    overflow: auto;
+  }
+
+  &__tables {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__country-stat,
+  &__global-stat {
+    width: 100%;
+
+    .content {
+      &__title {
+        line-height: 30px;
+        font-size: 1.2rem;
+      }
+
+      &__number {
+        line-height: 30px;
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: $content-big-width) {
+  .container {
+    &__country-stat .content,
+    &__global-stat .content{
+      &__title {
+        font-size: 0.8rem;
+      }
+
+      &__number {
+        font-size: 1.45rem;
+      }
+    }
+
+    &__country-stat .list,
+    &__global-stat .list{
+      &__addition,
+      &__country,
+      &__number {
+        font-size: .6rem;
+      }
+    }
   }
 }
 
@@ -43,9 +96,29 @@
 
     &__statistics {
       margin: 0 auto;
-      width: 70%;
+      width: 98%;
       margin-top: -20px;
       margin-bottom: 60px;
+    }
+
+    &__country-stat .content,
+    &__global-stat .content{
+      &__title {
+        font-size: 1.2rem;
+      }
+
+      &__number {
+        font-size: 2rem;
+      }
+    }
+
+    &__country-stat .list,
+    &__global-stat .list{
+      &__addition,
+      &__country,
+      &__number {
+        font-size: 1rem;
+      }
     }
   }
 }
