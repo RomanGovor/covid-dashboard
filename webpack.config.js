@@ -29,7 +29,7 @@ module.exports = (env, options) => {
     mode: isProduction ? 'production' : 'development',
     devtool,
     watch: !isProduction,
-    entry: ['./src/index.js', './src/sass/style.scss'],
+    entry: ['babel-polyfill', './src/index.js', './src/sass/style.scss'],
     output: {
       // publicPath: ASSET_PATH,
       publicPath: '',
