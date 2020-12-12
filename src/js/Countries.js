@@ -5,7 +5,9 @@ export class Countries {
 
   async getTotalConfirmedCases() {
     const response = await fetch('https://api.covid19api.com/summary');
-    // const json = await response.json();
+
+    const json = await response.json();
+    console.log(json);
 
     // if (response.ok) {
     //
