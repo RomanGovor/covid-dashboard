@@ -58,10 +58,8 @@
       }
     }
   }
-}
 
-@media (max-width: $content-big-width) {
-  .container {
+  @media (max-width: $content-big-width) {
     &__country-stat .content,
     &__global-stat .content{
       &__title {
@@ -82,10 +80,8 @@
       }
     }
   }
-}
 
-@media (max-width: $content-middle-width) {
-  .container {
+  @media (max-width: $content-middle-width) {
     &__world {
       width: 29%;
     }
@@ -121,18 +117,23 @@
       }
     }
   }
-}
 
-@media (max-width: $content-little-width) {
-  .container {
+  @media (max-width: $content-little-width) {
     &__global {
       height: 20%;
     }
-  }
-}
 
-@media (max-width: $content-smallest-width) {
-  .container {
+    &__country-stat .list,
+    &__global-stat .list{
+      &__addition,
+      &__country,
+      &__number {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  @media (max-width: $content-smallest-width) {
     width: auto;
     padding: 0 29px;
   }

@@ -9,33 +9,16 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  background: #4DADF7;
-}
 
-@media (max-width: $content-big-width) {
-  .card {
-    //width: calc(100% / 3 - 25px);
+  @media (max-width: $content-big-width) {
     margin-bottom: 40px;
   }
-}
 
-@media (max-width: $content-middle-width) {
-  .card {
+  @media (max-width: $content-middle-width) {
     width: calc(100% / 2 - 10px);
-    margin-bottom: 40px;
   }
-}
 
-@media (max-width: $content-little-width) {
-  .card {
+  @media (max-width: $content-little-width) {
     width: 100%;
-  }
-}
-
-@media (max-width: 400px) {
-  .card {
-    .description {
-      padding: 0 10px;
-    }
   }
 }

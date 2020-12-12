@@ -47,64 +47,64 @@
   .color-blue {
     color: $color-blue;
   }
-}
 
-@media (max-width: $content-big-width) {
-  .subcard .content{
-    &__title {
-      font-size: 1.5rem;
-    }
+  @media (max-width: $content-big-width) {
+    .content {
+      &__title {
+        font-size: 1.5rem;
+      }
 
-    &__number {
-      font-size: 2.4rem;
-    }
-  }
-}
-
-@media (max-width: $content-hd-width) {
-  .subcard .content{
-    &__title {
-      font-size: 1.2rem;
-    }
-
-    &__number {
-      font-size: 2rem;
+      &__number {
+        font-size: 2.4rem;
+      }
     }
   }
-}
 
-@media (max-width: $content-middle-width) {
-  .subcard .content{
-    &__title {
-      font-size: 1.5rem;
-    }
+  @media (max-width: $content-hd-width) {
+    .content {
+      &__title {
+        font-size: 1.2rem;
+      }
 
-    &__number {
-      font-size: 2.4rem;
-    }
-  }
-}
-
-@media (max-width: $content-little-width) {
-  .subcard .content{
-    &__title {
-      font-size: 1.1rem;
-    }
-
-    &__number {
-      font-size: 1.6rem;
+      &__number {
+        font-size: 2rem;
+      }
     }
   }
-}
 
-@media (max-width: $content-smallest-width) {
-  .subcard .content {
-    &__title {
-      font-size: 0.9rem;
+  @media (max-width: $content-middle-width) {
+    .content {
+      &__title {
+        font-size: 1.5rem;
+      }
+
+      &__number {
+        font-size: 2.4rem;
+      }
     }
+  }
 
-    &__number {
-      font-size: 1.2rem;
+  @media (max-width: $content-little-width) {
+    .content {
+      &__title {
+        font-size: 1.1rem;
+      }
+
+      &__number {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  @media (max-width: $content-smallest-width) {
+    .content {
+      &__title {
+        font-size: 0.9rem;
+      }
+
+      &__number {
+        font-size: 1.2rem;
+      }
     }
   }
 }

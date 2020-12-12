@@ -26,16 +26,12 @@
   .overflow-normal {
     overflow: auto;
   }
-}
 
-@media (max-width: $content-little-width) {
-  .header {
+  @media (max-width: $content-little-width) {
     padding: 0 10px;
   }
-}
 
-@media (max-width: $content-smallest-width) {
-  .header {
+  @media (max-width: $content-smallest-width) {
     .title {
       font-size: 1.5rem;
     }
@@ -46,4 +42,5 @@
       bottom: 10px;
     }
   }
+
 }
