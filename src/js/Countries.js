@@ -53,13 +53,12 @@ export class Countries {
     data.Countries.forEach((elem) => {
       const country = {};
       country.country = elem.Country;
-      country.totalConfirmed = elem.TotalConfirmed + elem.NewConfirmed;
+      country.totalConfirmed = elem.TotalConfirmed;
       country.slug = elem.Slug;
       country.flag = `https://www.countryflags.io/${elem.CountryCode}/shiny/64.png`;
       this.countries.push(country);
     });
     this.sortCountries();
-    console.log(this.countries);
   }
 
   sortCountries() {
@@ -77,7 +76,6 @@ export class Countries {
   }
 
   getGlobalCases(data) {
-    console.log(data.Global.TotalConfirmed);
-    return data.Global.TotalConfirmed + data.Global.TotalDeaths;
+    return data.Global.TotalConfirmed;
   }
 }

@@ -38,16 +38,6 @@
     color: $color-red;
   }
 
-  .direction-column {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .direction-row {
-    display: flex;
-    flex-direction: row;
-  }
-
   @media (max-width: $content-little-width) {
     &__addition,
     &__country,
@@ -57,8 +47,16 @@
   }
 }
 
-.color-blue {
-  color: $color-blue;
+.color-recovered {
+  color: $color-recovered;
+}
+
+.color-deaths {
+  color: $color-light;
+}
+
+.color-confirmed {
+  color: $color-red;
 }
 
 .overflow-tables {

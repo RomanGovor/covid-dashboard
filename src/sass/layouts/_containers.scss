@@ -7,6 +7,11 @@
   padding: 0 5px 50px 5px;
   justify-content: center;
 
+  &__buttons {
+    position: relative;
+    top: 10px;
+  }
+
   &__world {
     word-break: break-all;
     width: 20%;
@@ -40,9 +45,13 @@
     display: flex;
     justify-content: space-between;
     height: 100%;
+
+    .list__inner-block {
+      align-items: normal;
+    }
   }
 
-  &__country-stat,
+  &__relative-stat,
   &__global-stat {
     width: 100%;
 
@@ -60,7 +69,7 @@
   }
 
   @media (max-width: $content-big-width) {
-    &__country-stat .content,
+    &__relative-stat .content,
     &__global-stat .content{
       &__title {
         font-size: 0.8rem;
@@ -71,7 +80,7 @@
       }
     }
 
-    &__country-stat .list,
+    &__relative-stat .list,
     &__global-stat .list{
       &__addition,
       &__country,
@@ -97,7 +106,7 @@
       margin-bottom: 60px;
     }
 
-    &__country-stat .content,
+    &__relative-stat .content,
     &__global-stat .content{
       &__title {
         font-size: 1.2rem;
@@ -108,7 +117,7 @@
       }
     }
 
-    &__country-stat .list,
+    &__relative-stat .list,
     &__global-stat .list{
       &__addition,
       &__country,
@@ -123,7 +132,7 @@
       height: 20%;
     }
 
-    &__country-stat .list,
+    &__relative-stat .list,
     &__global-stat .list{
       &__addition,
       &__country,

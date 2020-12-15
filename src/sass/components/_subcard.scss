@@ -44,8 +44,16 @@
     }
   }
 
-  .color-blue {
-    color: $color-blue;
+  .color-recovered {
+    color: $color-recovered;
+  }
+
+  .color-deaths {
+    color: $color-light;
+  }
+
+  .color-confirmed {
+    color: $color-red;
   }
 
   @media (max-width: $content-big-width) {
