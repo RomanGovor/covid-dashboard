@@ -12,6 +12,14 @@
     border-bottom: 1px solid $color-border;
   }
 
+  &__interactive {
+    transition: all 1s;
+
+    &:hover {
+      background: $color-hovered-list;
+    }
+  }
+
   &__inner-block {
     display: flex;
     padding: 5px 0 5px 5px;
@@ -45,6 +53,10 @@
       font-size: .8rem;
     }
   }
+
+  .active-item {
+    background: $color-blue;
+  }
 }
 
 .color-recovered {
@@ -62,6 +74,7 @@
 .overflow-tables {
   max-height: 218px;
   overflow: auto;
+  height: 190px;
 }
 
 .overflow-list {

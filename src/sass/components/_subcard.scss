@@ -56,6 +56,24 @@
     color: $color-red;
   }
 
+  .direction-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .direction-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .justify-around {
+    justify-content: space-around;
+  }
+
+  .width90 {
+    width: 90%;
+  }
+
   @media (max-width: $content-big-width) {
     .content {
       &__title {

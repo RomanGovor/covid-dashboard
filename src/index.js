@@ -5,11 +5,14 @@ import { Extra } from './js/Extra';
 
 class App {
   constructor() {
-    new Countries();
+    this.COUNTRIES = new Countries();
     this.TABLES = new Tables();
     this.globalTableIndex = 0;
     this.relativeTableIndex = 0;
+    this.indexActiveCountry = -1;
+    this.currentCountry = '';
     this.delegateTableArrows();
+    this.delegateCLickOnCountryList();
   }
 
   async delegateTableArrows() {
@@ -26,15 +29,33 @@ class App {
         this.globalTableIndex = this.checkOnRangePage(this.globalTableIndex);
 
         const key = Extra.getKeyByIndex(this.globalTableIndex);
-        this.TABLES.renderTableState(false, key);
+        this.TABLES.renderTableState(false, key, this.currentCountry);
       } else {
         if (btn.classList.contains('arrow-right')) this.relativeTableIndex += 1;
         else this.relativeTableIndex -= 1;
         this.relativeTableIndex = this.checkOnRangePage(this.relativeTableIndex);
 
         const key = Extra.getKeyByIndex(this.relativeTableIndex);
-        this.TABLES.renderTableState(true, key);
+        this.TABLES.renderTableState(true, key, this.currentCountry);
       }
+    });
+  }
+
+  async delegateCLickOnCountryList() {
+    const countriesList = document.querySelector('.counties-list');
+    countriesList.addEventListener('click', (event) => {
+      const span = event.target.closest('span');
+
+      if (!span || !span.classList.contains('list__item')) return;
+      this.indexActiveCountry = this.COUNTRIES
+        .changeIndexActiveCountry(countriesList, span, this.indexActiveCountry);
+      this.currentCountry = this.COUNTRIES
+        .changeNameActiveCountry(span, this.indexActiveCountry);
+
+      const keyRelative = Extra.getKeyByIndex(this.relativeTableIndex);
+      const keyGlobal = Extra.getKeyByIndex(this.globalTableIndex);
+      this.TABLES.renderTableState(true, keyRelative, this.currentCountry);
+      this.TABLES.renderTableState(false, keyGlobal, this.currentCountry);
     });
   }
 

@@ -1,0 +1,11 @@
+.button {
+  background: none;
+  border-radius: 50%;
+  border: none;
+  transition: all .3s;
+
+  &:hover {
+    transform: scale(1.4);
+    background: rgba(255, 255, 255, 0.3);
+  }
+}

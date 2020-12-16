@@ -25,8 +25,9 @@ export class Countries {
       for (let i = 0; i < this.countries.length; i++) {
         const elem = this.countries[i];
         const country = document.createElement('span');
-        country.classList.add('list__item');
+        country.classList.add('list__item', 'list__interactive');
         country.setAttribute('country', elem.slug);
+        country.setAttribute('country-id', i.toString());
         country.innerHTML = `
          <div class="list__inner-block">
            <div class="list__number">${this.convertNum(elem.totalConfirmed)}</div>
@@ -40,6 +41,19 @@ export class Countries {
         countriesList.append(country);
       }
     }
+  }
+
+  changeIndexActiveCountry(selector, country, oldIndex) {
+    if (oldIndex !== -1) selector.children[oldIndex].classList.remove('active-item');
+    let newIndex = parseInt(country.getAttribute('country-id'), 10);
+    if (newIndex !== oldIndex) selector.children[newIndex].classList.add('active-item');
+    else newIndex = -1;
+    return newIndex;
+  }
+
+  changeNameActiveCountry(country, index) {
+    if (index !== -1) return country.getAttribute('country');
+    return '';
   }
 
   clearCountriesList() {

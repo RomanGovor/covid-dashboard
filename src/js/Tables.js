@@ -18,8 +18,8 @@ export class Tables {
       const population = await response2.json();
       this.getCountriesArray(data, population);
       this.getGlobalInfo(data);
-      this.renderTableState(false, Constants.TABLES_KEYS[0]);
-      this.renderTableState(true, Constants.TABLES_KEYS[0]);
+      this.renderTableState(false, Constants.TABLES_KEYS[0], '');
+      this.renderTableState(true, Constants.TABLES_KEYS[0], '');
     } else console.log(`Ошибка HTTP 1 -: ${response1.status}, 2- ${response2.status}`);
   }
 
@@ -34,9 +34,14 @@ export class Tables {
     };
   }
 
-  renderTotalInfoByKeyInGlobal(key) {
+  renderTotalInfoByKeyInGlobal(key, nameCountry) {
+    let info = '';
     const global = document.querySelector('.global-num');
-    const info = Extra.convertNum(this.globalInfo[key]);
+    if (nameCountry === '') info = Extra.convertNum(this.globalInfo[key]);
+    else {
+      const index = this.findCountryIndex(nameCountry);
+      info = Extra.convertNum(this.countries[index][key]);
+    }
     const mode = this.chooseAdditionMode(key);
     const color = `color-${mode}`;
 
@@ -46,10 +51,10 @@ export class Tables {
     global.replaceWith(newGlobal);
   }
 
-  renderTableState(isRelative, key) {
+  renderTableState(isRelative, key, country) {
     if (this.countries.length !== 0) {
-      this.changeTableTitle(isRelative, key);
-      this.renderTableListByKey(isRelative, key);
+      this.changeTableTitle(isRelative, key, country);
+      this.renderTableListByKey(isRelative, key, country);
       this.renderSliderTitle(isRelative, key);
     }
   }
@@ -66,11 +71,10 @@ export class Tables {
     sliderTitle.textContent = newTitle;
   }
 
-  renderTableListByKey(isRelative, key) {
+  renderTableListByKey(isRelative, key, nameCountry) {
     const mode = this.chooseAdditionMode(key);
     const color = `color-${mode}`;
     let list;
-    let listNum = 0;
     if (isRelative) {
       list = document.querySelector('.relative-list');
       this.updateTemporaryNums(key);
@@ -80,15 +84,37 @@ export class Tables {
     }
     Extra.clearListBySelector(list);
 
-    for (let i = 0; i < this.countries.length; i++) {
-      const elem = this.countries[i];
-      if (isRelative) listNum = Extra.calculatePer100k(elem, key);
-      else listNum = Extra.convertNum(elem[key]);
+    if (nameCountry === '') {
+      for (let i = 0; i < this.countries.length; i++) {
+        this.appendCountryItem(isRelative, key, i, list, mode, color);
+      }
+    } else {
+      const index = this.findCountryIndex(nameCountry);
+      this.appendCountryItem(isRelative, key, index, list, mode, color);
+    }
+  }
 
-      const country = document.createElement('span');
-      country.classList.add('list__item');
-      country.setAttribute('country', elem.slug);
-      country.innerHTML = `
+  findCountryIndex(nameCountry) {
+    let index = -1;
+    for (let i = 0; i < this.countries.length; i++) {
+      if (this.countries[i].slug === nameCountry) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  }
+
+  appendCountryItem(isRelative, key, i, list, mode, color) {
+    const elem = this.countries[i];
+    let listNum = 0;
+    if (isRelative) listNum = Extra.calculatePer100k(elem, key);
+    else listNum = Extra.convertNum(elem[key]);
+
+    const country = document.createElement('span');
+    country.classList.add('list__item');
+    country.setAttribute('country', elem.slug);
+    country.innerHTML = `
           <div class="list__inner-block direction-column">
             <div class="direction-row">
               <div class="list__number ${color}">${listNum}</div>
@@ -98,11 +124,10 @@ export class Tables {
             <div class="list__country">${elem.country}</div>
           </div>
         `;
-      list.append(country);
-    }
+    list.append(country);
   }
 
-  changeTableTitle(isRelative, key) {
+  changeTableTitle(isRelative, key, nameCountry) {
     const index = Constants.TABLES_KEYS.indexOf(key);
     const newTitle = Constants.TABLES_CATEGORY[index];
     let title;
@@ -110,7 +135,7 @@ export class Tables {
       title = document.querySelector('.relative-title');
     } else {
       title = document.querySelector('.global-title');
-      this.renderTotalInfoByKeyInGlobal(key);
+      this.renderTotalInfoByKeyInGlobal(key, nameCountry);
     }
     title.textContent = newTitle;
   }
