@@ -29,7 +29,7 @@ module.exports = (env, options) => {
     mode: isProduction ? 'production' : 'development',
     devtool,
     watch: !isProduction,
-    entry: ['babel-polyfill', './src/index.js', './src/sass/style.scss'],
+    entry: ['./src/index.js', './src/sass/style.scss'],
     output: {
       // publicPath: ASSET_PATH,
       publicPath: '',
@@ -42,6 +42,7 @@ module.exports = (env, options) => {
         {
           test: /\.js$/,
           exclude: /node_modules/,
+
           use: jsLoaders(),
         },
         {
@@ -49,6 +50,10 @@ module.exports = (env, options) => {
           use: [
             MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
           ],
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|svg|jpe?g|gif)$/,
@@ -72,10 +77,10 @@ module.exports = (env, options) => {
             },
           ],
         },
-        {
-          test: /\.html$/,
-          loader: 'html-loader',
-        },
+        // {
+        //   test: /\.html$/,
+        //   loader: 'html-loader',
+        // },
       ],
     },
 
@@ -111,6 +116,30 @@ module.exports = (env, options) => {
     performance: {
       maxEntrypointSize: 5512000,
       maxAssetSize: 5512000,
+    },
+    resolve: {
+      alias: {
+        './images/layers.png$': path.resolve(
+          __dirname,
+          './node_modules/leaflet/dist/images/layers.png',
+        ),
+        './images/layers-2x.png$': path.resolve(
+          __dirname,
+          './node_modules/leaflet/dist/images/layers-2x.png',
+        ),
+        './images/marker-icon.png$': path.resolve(
+          __dirname,
+          './node_modules/leaflet/dist/images/marker-icon.png',
+        ),
+        './images/marker-icon-2x.png$': path.resolve(
+          __dirname,
+          './node_modules/leaflet/dist/images/marker-icon-2x.png',
+        ),
+        './images/marker-shadow.png$': path.resolve(
+          __dirname,
+          './node_modules/leaflet/dist/images/marker-shadow.png',
+        ),
+      },
     },
   };
   return config;

@@ -2,11 +2,13 @@ import { Countries } from './js/Countries';
 import { Tables } from './js/Tables';
 import { Constants } from './js/Constants';
 import { Extra } from './js/Extra';
+import Map from './js/Map';
 
 class App {
   constructor() {
     this.COUNTRIES = new Countries();
     this.TABLES = new Tables();
+    this.MAP = new Map();
     this.globalTableIndex = 0;
     this.relativeTableIndex = 0;
     this.indexActiveCountry = -1;
