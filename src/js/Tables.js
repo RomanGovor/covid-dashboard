@@ -9,7 +9,6 @@ export class Tables {
   }
 
   async initTotalInfo() {
-    console.log(document);
     const response1 = await fetch('https://api.covid19api.com/summary');
     const response2 = await fetch('https://restcountries.eu/rest/v2/all?fields=name;population;alpha2Code');
 
@@ -168,7 +167,17 @@ export class Tables {
     return mode;
   }
 
-  getCountriesArray(data, population) {
+  async getCountriesArray(data, population) {
+    const response = await fetch('https://corona.lmao.ninja/v2/countries');
+    const points = [];
+    const pointsCode = [];
+    if (response.ok) {
+      (await response.json()).forEach((el) => {
+        points.push(el.countryInfo);
+        pointsCode.push(el.countryInfo.iso2);
+      });
+    }
+
     data.Countries.forEach((elem) => {
       const country = {};
       country.country = elem.Country;
@@ -181,6 +190,12 @@ export class Tables {
       country.slug = elem.Slug;
       country.temporaryNum = 0;
       country.population = this.getCountryPopulation(elem.CountryCode, population);
+
+      country.сountryCode = elem.CountryCode;
+      if (pointsCode.includes(country.сountryCode)) {
+        const point = points[pointsCode.indexOf(country.сountryCode)];
+        country.сountryCoordinates = [point.lat, point.long];
+      } else country.сountryCoordinates = null;
       this.countries.push(country);
     });
   }
@@ -201,5 +216,9 @@ export class Tables {
       }
     }
     return pop;
+  }
+
+  getCountries() {
+    return this.countries;
   }
 }
