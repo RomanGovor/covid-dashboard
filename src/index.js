@@ -8,7 +8,8 @@ class App {
   constructor() {
     this.COUNTRIES = new Countries();
     this.TABLES = new Tables();
-    this.MAP = new Map();
+
+    this.MAP = new Map(this.TABLES.getCountries());
     this.globalTableIndex = 0;
     this.relativeTableIndex = 0;
     this.indexActiveCountry = -1;

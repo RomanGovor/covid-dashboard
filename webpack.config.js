@@ -77,10 +77,6 @@ module.exports = (env, options) => {
             },
           ],
         },
-        // {
-        //   test: /\.html$/,
-        //   loader: 'html-loader',
-        // },
       ],
     },
 
@@ -89,21 +85,20 @@ module.exports = (env, options) => {
       port: 8081,
       overlay: true,
       hot: !isProduction,
-      // open: 'chrome',
     },
 
     plugins: [
       new webpack.DefinePlugin({
         'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
       }),
-      // new CopyPlugin({
-      //     patterns: [
-      //         { from: 'src/assets', to: 'assets' },
-      //     ],
-      //     options: {
-      //         concurrency: 100,
-      //     },
-      // }),
+      new CopyPlugin({
+        patterns: [
+          { from: 'src/assets/images/red-circle.png', to: 'assets/images' },
+        ],
+        options: {
+          concurrency: 100,
+        },
+      }),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './index.html',
@@ -116,30 +111,6 @@ module.exports = (env, options) => {
     performance: {
       maxEntrypointSize: 5512000,
       maxAssetSize: 5512000,
-    },
-    resolve: {
-      alias: {
-        './images/layers.png$': path.resolve(
-          __dirname,
-          './node_modules/leaflet/dist/images/layers.png',
-        ),
-        './images/layers-2x.png$': path.resolve(
-          __dirname,
-          './node_modules/leaflet/dist/images/layers-2x.png',
-        ),
-        './images/marker-icon.png$': path.resolve(
-          __dirname,
-          './node_modules/leaflet/dist/images/marker-icon.png',
-        ),
-        './images/marker-icon-2x.png$': path.resolve(
-          __dirname,
-          './node_modules/leaflet/dist/images/marker-icon-2x.png',
-        ),
-        './images/marker-shadow.png$': path.resolve(
-          __dirname,
-          './node_modules/leaflet/dist/images/marker-shadow.png',
-        ),
-      },
     },
   };
   return config;
