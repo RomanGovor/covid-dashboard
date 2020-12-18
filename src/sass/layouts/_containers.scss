@@ -18,9 +18,37 @@
     background: $color-yellow;
   }
 
+  &__infected-map {
+    margin-bottom: 0;
+  }
+
   &__map {
     width: 50%;
     background: $color-red;
+
+    &-buttons {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding-left: 10px ;
+    }
+    
+    &-button {
+      width: 100px;
+      height: 30px;
+      border: 1px solid black;
+      color: black;
+      text-align: center;
+      line-height: 30px;
+      background: gray;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &_active {
+        background: none;
+        color: white;
+      }
+    }
   }
 
   &__statistics {

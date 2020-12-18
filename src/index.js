@@ -34,7 +34,7 @@ class App {
         this.getGlobalInfo(data);
         this.COUNTRIES = new Countries(this.countries, this.globalInfo);
         this.TABLES = new Tables(this.countries, this.globalInfo);
-        this.MAP = new Map(this.countries);
+        this.MAP = new Map(this.countries, this.globalInfo);
       });
     } else console.log(`Ошибка HTTP 1 -: ${response1.status}, 2- ${response2.status}`);
   }

@@ -70,4 +70,8 @@ export const Constants = {
     ']': 221,
     "'": 222,
   },
+  MARKER_SIZE: {
+    min: 8,
+    max: 50,
+  },
 };
