@@ -1,4 +1,6 @@
-export class Countries {
+import Map from './Map';
+
+class Countries {
   constructor() {
     this.getTotalConfirmedCases();
     this.countries = [];
@@ -93,3 +95,4 @@ export class Countries {
     return data.Global.TotalConfirmed;
   }
 }
+export default Countries;
