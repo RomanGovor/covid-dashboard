@@ -93,7 +93,7 @@ module.exports = (env, options) => {
       }),
       new CopyPlugin({
         patterns: [
-          { from: 'src/assets/images/red-circle.png', to: 'assets/images' },
+          { from: 'src/assets', to: 'assets' },
         ],
         options: {
           concurrency: 100,

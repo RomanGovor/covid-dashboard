@@ -27,7 +27,9 @@ class Map {
       this.countries.forEach((el) => {
         console.log('element ', el, el.totalConfirmed);
         const conf = el.totalConfirmed;
-        const size = ((el.totalConfirmed * 100) / 17000000) * 50;
+        // const size = ((el.totalConfirmed * 100) / 170000000) * 50;
+        const size = ((el.totalConfirmed) / el.population) * 400;
+        // тут я пробовал установить размер по населению, то мне кажется такое
 
         this.addMarker(
           ...el.сountryCoordinates,

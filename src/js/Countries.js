@@ -1,20 +1,40 @@
 export class Countries {
-  constructor() {
+  constructor(countries, globalInfo) {
+    this.countries = [...countries];
+    this.globalInfo = globalInfo;
     this.getTotalConfirmedCases();
-    this.countries = [];
     this.renderCountriesList();
+    this.searchCountry();
   }
 
-  async getTotalConfirmedCases() {
-    const response = await fetch('https://api.covid19api.com/summary');
-    if (response.ok) {
-      const data = await response.json();
-      this.renderGlobalCases(data);
-      this.getCountriesArray(data);
-      this.renderCountriesList();
-    } else {
-      alert(`Ошибка HTTP: ${response.status}`);
-    }
+  searchCountry() {
+    const input = document.querySelector('#textarea');
+    const keyboard = document.querySelector('.keyboard');
+
+    input.addEventListener('input', () => {
+      this.iterateOverCountries(input.value);
+    });
+    keyboard.addEventListener('click', () => {
+      this.iterateOverCountries(input.value);
+    });
+  }
+
+  iterateOverCountries(str) {
+    const countriesList = document.querySelector('.counties-list');
+    const countries = countriesList.querySelectorAll('.list__country');
+    countries.forEach((elem) => {
+      if (elem.textContent.toLowerCase().includes(str.toLowerCase())) {
+        elem.parentNode.parentNode.classList.remove('none');
+      } else {
+        elem.parentNode.parentNode.classList.add('none');
+      }
+    });
+  }
+
+  getTotalConfirmedCases() {
+    this.renderGlobalCases(this.globalInfo);
+    this.sortCountries();
+    this.renderCountriesList();
   }
 
   renderCountriesList() {
@@ -63,18 +83,6 @@ export class Countries {
     }
   }
 
-  getCountriesArray(data) {
-    data.Countries.forEach((elem) => {
-      const country = {};
-      country.country = elem.Country;
-      country.totalConfirmed = elem.TotalConfirmed;
-      country.slug = elem.Slug;
-      country.flag = `https://www.countryflags.io/${elem.CountryCode}/shiny/64.png`;
-      this.countries.push(country);
-    });
-    this.sortCountries();
-  }
-
   sortCountries() {
     this.countries.sort((a, b) => b.totalConfirmed - a.totalConfirmed);
   }
@@ -90,6 +98,6 @@ export class Countries {
   }
 
   getGlobalCases(data) {
-    return data.Global.TotalConfirmed;
+    return data.totalConfirmed;
   }
 }
