@@ -63,8 +63,16 @@
   }
 
   &__graphics {
+    position: relative;
     height: 90%;
     margin-top: 20px;
+  }
+  
+  &__charts {
+    display: block;
+    width: 100%;
+    min-height: 200px;
+    height: 100%;
   }
 
   &__countries {

@@ -4,6 +4,7 @@ import { Constants } from './js/Constants';
 import { Extra } from './js/Extra';
 import Map from './js/Map';
 import { Keyboard } from './js/Keyboard';
+import Charts from './js/Charts';
 
 class App {
   constructor() {
@@ -11,6 +12,7 @@ class App {
     this.COUNTRIES = null;
     this.MAP = null;
     this.KEYBOARD = new Keyboard();
+    this.CHARTS = null;
     this.countries = [];
     this.globalInfo = {};
     this.initCountries();
@@ -35,6 +37,7 @@ class App {
         this.COUNTRIES = new Countries(this.countries, this.globalInfo);
         this.TABLES = new Tables(this.countries, this.globalInfo);
         this.MAP = new Map(this.countries, this.globalInfo);
+        this.CHARTS = new Charts(this.countries, this.globalInfo);
         this.delegateClickOnMarkers();
       });
     } else console.log(`Ошибка HTTP 1 -: ${response1.status}, 2- ${response2.status}`);
