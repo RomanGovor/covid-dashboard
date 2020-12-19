@@ -35,6 +35,7 @@ class App {
         this.COUNTRIES = new Countries(this.countries, this.globalInfo);
         this.TABLES = new Tables(this.countries, this.globalInfo);
         this.MAP = new Map(this.countries, this.globalInfo);
+        this.delegateClickOnMarkers();
       });
     } else console.log(`Ошибка HTTP 1 -: ${response1.status}, 2- ${response2.status}`);
   }
@@ -131,6 +132,25 @@ class App {
         .changeIndexActiveCountry(countriesList, span, this.indexActiveCountry);
       this.currentCountry = this.COUNTRIES
         .changeNameActiveCountry(span, this.indexActiveCountry);
+
+      const keyRelative = Extra.getKeyByIndex(this.relativeTableIndex);
+      const keyGlobal = Extra.getKeyByIndex(this.globalTableIndex);
+      this.TABLES.renderTableState(true, keyRelative, this.currentCountry);
+      this.TABLES.renderTableState(false, keyGlobal, this.currentCountry);
+    });
+  }
+
+  delegateClickOnMarkers() {
+    const containerMarkers = document.querySelector('.leaflet-marker-pane');
+    containerMarkers.addEventListener('click', (event) => {
+      const img = event.target.closest('img');
+
+      if (!img || !img.hasAttribute('country')) return;
+
+      this.indexActiveCountry = this.COUNTRIES
+        .removeAttrActiveCountry(this.indexActiveCountry);
+      this.currentCountry = this.COUNTRIES
+        .setNameActiveCountryByMarker(img);
 
       const keyRelative = Extra.getKeyByIndex(this.relativeTableIndex);
       const keyGlobal = Extra.getKeyByIndex(this.globalTableIndex);

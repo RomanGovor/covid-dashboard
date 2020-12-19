@@ -23,10 +23,11 @@ class Map {
     const layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
     this.map.addLayer(layer);
 
-    this.addConfirmedMarkers();
+    this.addMarkersByKey(Constants.TABLES_KEYS[2]);
   }
 
   addMarker(
+    slug,
     country = '',
     Latitude,
     Longitude,
@@ -54,112 +55,88 @@ class Map {
     const marker = L.marker([parseFloat(Latitude), parseFloat(Longitude)], markerOptions);
     marker.addTo(this.map);
 
+    marker.bindPopup(`<h4 class="marker__title">${country}</h4>${count} ${popupText}`);
     // marker.mouseover = () => {
     //   console.log('!!!!');
     //   marker.openPopup();
     // };
 
-    console.log('marker ', marker);
-    // Adding pop-up to the marker
-    marker.bindPopup(`<h4 class="marker__title">${country}</h4>${count} ${popupText}`);
+    const container = document.querySelector('.leaflet-marker-pane');
+    const elem = container.children[container.childElementCount - 1];
+    elem.setAttribute('country', slug);
   }
 
-  addConfirmedMarkers() {
+  addMarkersByKey(key, color, title) {
     this.removeMarkers();
     if (this.countries) {
       this.countries.forEach((el) => {
-        console.log('element ', el, el.totalConfirmed);
-        let size = ((el.totalConfirmed * 100) / this.globalInfo.totalConfirmed) * 8;
+        let size = ((el[key] * 100) / this.globalInfo[key]) * 8;
         size = this.checkMarkerSize(size);
 
         if (el.сountryCoordinates) {
           const marker = this.addMarker(
+            el.slug,
             el.country,
             ...el.сountryCoordinates,
-            el.totalConfirmed,
+            el[key],
             [size, size],
+            color,
+            title,
           );
-          this.markers.push(marker);
+          if (marker !== undefined) this.markers.push(marker);
         }
       });
-    }
-  }
-
-  addRecoveredMarkers() {
-    this.removeMarkers();
-    if (this.countries) {
-      this.countries.forEach((el) => {
-        let size = ((el.totalRecovered * 100) / this.globalInfo.totalRecovered) * 8;
-        size = this.checkMarkerSize(size);
-
-        if (el.сountryCoordinates) {
-          const marker = this.addMarker(
-            el.country,
-            ...el.сountryCoordinates,
-            el.totalRecovered,
-            [size, size],
-            'green',
-            'recovered',
-          );
-          this.markers.push(marker);
-        }
-      });
-    }
-  }
-
-  addDeathsMarkers() {
-    this.removeMarkers();
-    if (this.countries) {
-      this.countries.forEach((el) => {
-        let size = ((el.totalDeaths * 100) / this.globalInfo.totalDeaths) * 8;
-        size = this.checkMarkerSize(size);
-
-        if (el.сountryCoordinates) {
-          const marker = this.addMarker(
-            el.country,
-            ...el.сountryCoordinates,
-            el.totalDeaths,
-            [size, size],
-            'grey',
-            'total deaths',
-          );
-          this.markers.push(marker);
-        }
-      });
+      console.log(this.markers);
     }
   }
 
   removeMarkers() {
-    this.markers.forEach((element) => {
-      if (element) element.remove();
-    });
+    this.clearMarkerList();
     this.markers = [];
+  }
+
+  clearMarkerList() {
+    const markerList = document.querySelector('.leaflet-marker-pane');
+    while (markerList.childElementCount !== 0) {
+      markerList.removeChild(markerList.firstChild);
+    }
   }
 
   bindButtonsEvens() {
     const root = document.querySelector('.container__map-buttons');
     root.addEventListener('click', (e) => {
-      const buttons = root.querySelectorAll('.container__map-button');
-
       if (e.target.classList.contains('js-confirmed-button')) {
-        this.addConfirmedMarkers();
-        buttons.forEach((element) => {
-          element.classList.remove('container__map-button_active');
-        });
+        this.addMarkersByKey(Constants.TABLES_KEYS[2]);
+        this.removeMapButtonActive();
         e.target.classList.add('container__map-button_active');
       } else if (e.target.classList.contains('js-recovered-button')) {
-        this.addRecoveredMarkers();
-        buttons.forEach((element) => {
-          element.classList.remove('container__map-button_active');
-        });
+        this.addMarkersByKey(Constants.TABLES_KEYS[1], 'green', 'total recovered');
+        this.removeMapButtonActive();
         e.target.classList.add('container__map-button_active');
       } else if (e.target.classList.contains('js-deaths-button')) {
-        this.addDeathsMarkers();
-        buttons.forEach((element) => {
-          element.classList.remove('container__map-button_active');
-        });
+        this.addMarkersByKey(Constants.TABLES_KEYS[0], 'grey', 'total deaths');
+        this.removeMapButtonActive();
+        e.target.classList.add('container__map-button_active');
+      } else if (e.target.classList.contains('js-daily-confirmed-button')) {
+        this.addMarkersByKey(Constants.TABLES_KEYS[4], 'red', 'daily confirmed');
+        this.removeMapButtonActive();
+        e.target.classList.add('container__map-button_active');
+      } else if (e.target.classList.contains('js-daily-recovered-button')) {
+        this.addMarkersByKey(Constants.TABLES_KEYS[5], 'green', 'daily recovered');
+        this.removeMapButtonActive();
+        e.target.classList.add('container__map-button_active');
+      } else if (e.target.classList.contains('js-daily-deaths-button')) {
+        this.addMarkersByKey(Constants.TABLES_KEYS[3], 'grey', 'daily deaths');
+        this.removeMapButtonActive();
         e.target.classList.add('container__map-button_active');
       }
+    });
+  }
+
+  removeMapButtonActive() {
+    const buttons = document.querySelectorAll('.container__map-button');
+    buttons.forEach((element) => {
+      element.classList.remove('container__map-button_active');
     });
   }
 

@@ -71,9 +71,19 @@ export class Countries {
     return newIndex;
   }
 
+  removeAttrActiveCountry(index) {
+    const countries = document.querySelector('.counties-list');
+    if (index !== -1) countries.children[index].classList.remove('active-item');
+    return -1;
+  }
+
   changeNameActiveCountry(country, index) {
     if (index !== -1) return country.getAttribute('country');
     return '';
+  }
+
+  setNameActiveCountryByMarker(marker) {
+    return marker.getAttribute('country');
   }
 
   clearCountriesList() {
