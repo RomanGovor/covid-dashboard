@@ -8,7 +8,6 @@ class Map {
     this.countries = [...countries];
     this.globalInfo = globalInfo;
     this.markers = [];
-    console.log('why? ', this.countries, globalInfo);
     this.initMap();
     this.bindButtonsEvens();
   }
@@ -24,6 +23,18 @@ class Map {
     this.map.addLayer(layer);
 
     this.addMarkersByKey(Constants.TABLES_KEYS[2]);
+
+    const legend = L.control({ position: 'bottomleft' });
+    legend.onAdd = (map) => {
+      const div = L.DomUtil.create('div', 'legend');
+      div.innerHTML += `<ul style="position: relative; list-style: none; display: flex; background: rgba(255, 255, 255, 0.7); margin: 0; padding: 5px;">
+      <li style="margin-right: 5px;"><img style="position: relative; top: 5px;" src="../assets/images/red-circle.png" width="20" height="20"> - Confirmed</li>
+      <li style="margin-right: 5px;"><img style="position: relative; top: 5px;" src="../assets/images/green-circle.png" width="20" height="20"> - Recovered</li>
+      <li><img style="position: relative; top: 5px;" src="../assets/images/grey-circle.png" width="20" height="20"> - Deaths</li>
+      </ul>`;
+      return div;
+    };
+    legend.addTo(this.map);
   }
 
   addMarker(
@@ -36,14 +47,11 @@ class Map {
     iconColor = 'red',
     popupText = 'confirmed',
   ) {
-    // Icon options
     const iconOptions = {
       iconUrl: `../assets/images/${iconColor}-circle.png`,
       iconSize,
     };
-    // Creating a custom icon
     const customIcon = L.icon(iconOptions);
-    // Options for the marker
     const markerOptions = {
       title: `${country} ${count} ${popupText}`,
       clickable: true,
@@ -51,19 +59,15 @@ class Map {
       draggable: false,
       icon: customIcon,
     };
-    // Creating a marker
+
     const marker = L.marker([parseFloat(Latitude), parseFloat(Longitude)], markerOptions);
     marker.addTo(this.map);
-
     marker.bindPopup(`<h4 class="marker__title">${country}</h4>${count} ${popupText}`);
-    // marker.mouseover = () => {
-    //   console.log('!!!!');
-    //   marker.openPopup();
-    // };
 
     const container = document.querySelector('.leaflet-marker-pane');
     const elem = container.children[container.childElementCount - 1];
     elem.setAttribute('country', slug);
+    this.markers.push(marker);
   }
 
   addMarkersByKey(key, color, title) {
@@ -86,7 +90,6 @@ class Map {
           if (marker !== undefined) this.markers.push(marker);
         }
       });
-      console.log(this.markers);
     }
   }
 
@@ -132,6 +135,17 @@ class Map {
     if (size < Constants.MARKER_SIZE.min) return Constants.MARKER_SIZE.min;
     if (size > Constants.MARKER_SIZE.max) return Constants.MARKER_SIZE.max;
     return size;
+  }
+
+  move(coords) {
+    this.map.flyTo(coords);
+
+    const popup = this.markers.find(
+      (el) => (
+        // eslint-disable-next-line no-underscore-dangle
+        (el._latlng.lat === coords[0]) && (el._latlng.lng === coords[1])),
+    );
+    popup.openPopup();
   }
 }
 
