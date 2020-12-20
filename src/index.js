@@ -141,11 +141,10 @@ class App {
       this.TABLES.renderTableState(true, keyRelative, this.currentCountry);
       this.TABLES.renderTableState(false, keyGlobal, this.currentCountry);
     });
+
     countriesList.addEventListener('click', () => {
       if (this.COUNTRIES.countries) {
         const coords = this.COUNTRIES.countries[this.indexActiveCountry].сountryCoordinates;
-        // console.log('coords ', coords);
-        // console.log('getMarkers ', this.MAP.getMarkers());
         if (coords) this.MAP.move(coords);
       }
     });

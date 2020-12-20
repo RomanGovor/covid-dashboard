@@ -11,15 +11,6 @@ class Charts {
     this.indexPositionCountries = 0;
     this.currentCategoryIndex = 2;
     this.update();
-
-    // для примера тип line (в массив можно меньше показателей воткнуть)
-    // this.update(
-    //   this.countries.slice(6, 12).map((element) => element.totalConfirmed),
-    //   this.countries.slice(6, 12).map((element) => element.country),
-    //   Constants.TABLES_CATEGORY[1],
-    //   'line',
-    //   0,
-    // );
   }
 
   update(
