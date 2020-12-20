@@ -105,31 +105,14 @@ class Map {
   bindButtonsEvens() {
     const root = document.querySelector('.container__map-buttons');
     root.addEventListener('click', (e) => {
-      if (e.target.classList.contains('js-confirmed-button')) {
-        this.addMarkersByKey(Constants.TABLES_KEYS[2]);
-        this.removeMapButtonActive();
-        e.target.classList.add('container__map-button_active');
-      } else if (e.target.classList.contains('js-recovered-button')) {
-        this.addMarkersByKey(Constants.TABLES_KEYS[1], 'green', 'total recovered');
-        this.removeMapButtonActive();
-        e.target.classList.add('container__map-button_active');
-      } else if (e.target.classList.contains('js-deaths-button')) {
-        this.addMarkersByKey(Constants.TABLES_KEYS[0], 'grey', 'total deaths');
-        this.removeMapButtonActive();
-        e.target.classList.add('container__map-button_active');
-      } else if (e.target.classList.contains('js-daily-confirmed-button')) {
-        this.addMarkersByKey(Constants.TABLES_KEYS[4], 'red', 'daily confirmed');
-        this.removeMapButtonActive();
-        e.target.classList.add('container__map-button_active');
-      } else if (e.target.classList.contains('js-daily-recovered-button')) {
-        this.addMarkersByKey(Constants.TABLES_KEYS[5], 'green', 'daily recovered');
-        this.removeMapButtonActive();
-        e.target.classList.add('container__map-button_active');
-      } else if (e.target.classList.contains('js-daily-deaths-button')) {
-        this.addMarkersByKey(Constants.TABLES_KEYS[3], 'grey', 'daily deaths');
-        this.removeMapButtonActive();
-        e.target.classList.add('container__map-button_active');
-      }
+      const categoryIndex = +(e.target.getAttribute('category-id'));
+      this.addMarkersByKey(
+        Constants.TABLES_KEYS[categoryIndex],
+        Constants.CATEGORY_COLORS[categoryIndex],
+        Constants.TABLES_CATEGORY[categoryIndex],
+      );
+      this.removeMapButtonActive();
+      e.target.classList.add('container__map-button_active');
     });
   }
 

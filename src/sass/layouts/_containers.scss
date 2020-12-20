@@ -67,8 +67,9 @@
     position: relative;
     // max-width: 400px;
     height: calc(100% - 20px);
-    // max-height: 256px;
-    margin: 20px 10px 10px;
+    max-height: 250px;
+    margin: 20px 10px 20px;
+    align-items: center;
     // margin-top: 20px;
 
     &-buttons {
@@ -102,7 +103,7 @@
       }
     }
   }
-  
+
   &__charts {
     display: block;
     width: 100%;

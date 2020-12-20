@@ -86,15 +86,14 @@
             </div>
 
             <div class="card container__map">
-                <div class="subcard container__infected-map">
-                </div>
+                <div class="subcard container__infected-map"></div>
                 <ul class="container__map-buttons">
-                    <li class="container__map-button container__map-button_active js-confirmed-button">Confirmed</li>
-                    <li class="container__map-button js-recovered-button">Recovered</li>
-                    <li class="container__map-button js-deaths-button">Deaths</li>
-                    <li class="container__map-button js-daily-confirmed-button">Daily Confirmed</li>
-                    <li class="container__map-button js-daily-recovered-button">Daily Recovered</li>
-                    <li class="container__map-button js-daily-deaths-button">Daily Deaths</li>
+                    <li class="container__map-button container__map-button_active" category-id="2">Confirmed</li>
+                    <li class="container__map-button" category-id="1">Recovered</li>
+                    <li class="container__map-button" category-id="0">Deaths</li>
+                    <li class="container__map-button" category-id="5">Daily Confirmed</li>
+                    <li class="container__map-button" category-id="4">Daily Recovered</li>
+                    <li class="container__map-button" category-id="3">Daily Deaths</li>
                 </ul>
             </div>
 
@@ -162,14 +161,16 @@
                     </div>
                 </div>
                 <div class="subcard container__graphics">
-                    <canvas class="container__charts" id="myChart" width="400" height="200"></canvas>
+                    <canvas class="container__charts" id="myChart"></canvas>
                     <ul class="container__graphics-buttons">
-                        <li class="container__graphics-button container__graphics-button_active js-graphics-confirmed-button">Confirmed</li>
-                        <li class="container__graphics-button js-graphics-recovered-button">Recovered</li>
-                        <li class="container__graphics-button js-graphics-deaths-button">Deaths</li>
-                        <li class="container__graphics-button js-graphics-daily-confirmed-button">Daily Confirmed</li>
-                        <li class="container__graphics-button js-graphics-daily-recovered-button">Daily Recovered</li>
-                        <li class="container__graphics-button js-graphics-daily-deaths-button">Daily Deaths</li>
+                        <button class="slider__arrow arrow-left">&#9668;</button>
+                        <li class="container__graphics-button container__graphics-button_active" category-id="2">Confirmed</li>
+                        <li class="container__graphics-button" category-id="1">Recovered</li>
+                        <li class="container__graphics-button" category-id="0">Deaths</li>
+                        <li class="container__graphics-button" category-id="5">Daily Confirmed</li>
+                        <li class="container__graphics-button" category-id="4">Daily Recovered</li>
+                        <li class="container__graphics-button" category-id="3">Daily Deaths</li>
+                        <button class="slider__arrow arrow-right">&#9658;</button>
                     </ul>
                 </div>
             </div>

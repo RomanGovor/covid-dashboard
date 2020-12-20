@@ -1,6 +1,7 @@
 export const Constants = {
   TABLES_CATEGORY: ['Total Deaths', 'Total Recovered', 'Total Confirmed', 'New Deaths', 'New Recovered', 'New Confirmed'],
   TABLES_KEYS: ['totalDeaths', 'totalRecovered', 'totalConfirmed', 'newDeaths', 'newRecovered', 'newConfirmed'],
+  CATEGORY_COLORS: ['grey', 'green', 'red', 'grey', 'green', 'red'],
   MAX_COUNT_PAGES_TABLES: 6,
   KEY_LAYOUT_EN: [
     '! 1', '@"2', '#№3', '$;4', '% 5', '^:6', '&?7', '* 8', '( 9', ') 0', '_ -', '+ =', 'backspace',
