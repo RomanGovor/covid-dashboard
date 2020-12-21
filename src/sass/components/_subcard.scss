@@ -109,28 +109,4 @@
       }
     }
   }
-
-  @media (max-width: $content-little-width) {
-    .content {
-      &__title {
-        font-size: 1.1rem;
-      }
-
-      &__number {
-        font-size: 1.6rem;
-      }
-    }
-  }
-
-  @media (max-width: $content-smallest-width) {
-    .content {
-      &__title {
-        font-size: 0.9rem;
-      }
-
-      &__number {
-        font-size: 1.2rem;
-      }
-    }
-  }
 }

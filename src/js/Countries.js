@@ -1,3 +1,5 @@
+import { Extra } from './Extra';
+
 export class Countries {
   constructor(countries, globalInfo) {
     this.countries = [...countries];
@@ -33,7 +35,7 @@ export class Countries {
 
   getTotalConfirmedCases() {
     this.renderGlobalCases(this.globalInfo);
-    this.sortCountries();
+    this.countries = Extra.sortCountriesByKeys(this.countries, 'totalConfirmed');
     this.renderCountriesList();
   }
 
@@ -61,6 +63,17 @@ export class Countries {
         countriesList.append(country);
       }
     }
+  }
+
+  findFullName(country) {
+    let fullName = '';
+    for (let i = 0; i < this.countries.length; i++) {
+      if (country.slug === country) {
+        fullName = country.country;
+        break;
+      }
+    }
+    return fullName;
   }
 
   changeIndexActiveCountry(selector, country, oldIndex) {
@@ -93,9 +106,9 @@ export class Countries {
     }
   }
 
-  sortCountries() {
-    this.countries.sort((a, b) => b.totalConfirmed - a.totalConfirmed);
-  }
+  // sortCountries() {
+  //   this.countries.sort((a, b) => b.totalConfirmed - a.totalConfirmed);
+  // }
 
   convertNum(num) {
     return `${num}`.replace(/(\d)(?=(\d{3})+$)/g, '$1 ');

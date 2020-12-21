@@ -61,7 +61,7 @@ class App {
         country.newDeaths = elem.NewDeaths;
         country.totalDeaths = elem.TotalDeaths;
         country.newRecovered = elem.NewRecovered;
-        country.totalRecovered = elem.TotalRecovered;
+        country.totalDeaths = elem.TotalDeaths;
         country.slug = elem.Slug;
         country.temporaryNum = 0;
         country.flag = `https://www.countryflags.io/${elem.CountryCode}/shiny/64.png`;
@@ -136,6 +136,12 @@ class App {
       this.currentCountry = this.COUNTRIES
         .changeNameActiveCountry(span, this.indexActiveCountry);
 
+      let fullName = '';
+      if (this.currentCountry !== '') {
+        fullName = span.querySelector('.list__country').textContent;
+      }
+      this.CHARTS.updateByCountry(this.currentCountry, fullName);
+
       const keyRelative = Extra.getKeyByIndex(this.relativeTableIndex);
       const keyGlobal = Extra.getKeyByIndex(this.globalTableIndex);
       this.TABLES.renderTableState(true, keyRelative, this.currentCountry);
@@ -161,6 +167,9 @@ class App {
         .removeAttrActiveCountry(this.indexActiveCountry);
       this.currentCountry = this.COUNTRIES
         .setNameActiveCountryByMarker(img);
+
+      const fullName = this.COUNTRIES.findFullName(this.currentCountry);
+      this.CHARTS.updateByCountry(this.currentCountry, fullName);
 
       const keyRelative = Extra.getKeyByIndex(this.relativeTableIndex);
       const keyGlobal = Extra.getKeyByIndex(this.globalTableIndex);

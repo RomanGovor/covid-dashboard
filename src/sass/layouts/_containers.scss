@@ -66,12 +66,10 @@
   &__graphics {
     box-sizing: border-box;
     position: relative;
-    // max-width: 400px;
     height: calc(100% - 20px);
     max-height: 250px;
     margin: 20px 10px 20px;
     align-items: center;
-    // margin-top: 20px;
 
     &-buttons {
       display: flex;
@@ -177,7 +175,7 @@
         }
       }
     }
-    
+
   }
 
   &__charts {
@@ -242,11 +240,12 @@
 
   @media (max-width: $content-middle-width) {
     &__world {
-      width: 29%;
+      width: 99%;
+      margin-bottom: 20px;
     }
 
     &__map {
-      width: 69%;
+      width: 99%;
     }
 
     &__statistics {
@@ -273,21 +272,6 @@
       &__country,
       &__number {
         font-size: 1rem;
-      }
-    }
-  }
-
-  @media (max-width: $content-little-width) {
-    &__global {
-      height: 20%;
-    }
-
-    &__relative-stat .list,
-    &__global-stat .list{
-      &__addition,
-      &__country,
-      &__number {
-        font-size: 0.8rem;
       }
     }
   }

@@ -46,14 +46,6 @@
     color: $color-red;
   }
 
-  @media (max-width: $content-little-width) {
-    &__addition,
-    &__country,
-    &__number {
-      font-size: .8rem;
-    }
-  }
-
   .active-item {
     background: $color-blue;
   }
