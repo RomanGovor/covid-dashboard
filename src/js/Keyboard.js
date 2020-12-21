@@ -62,7 +62,6 @@ export class Keyboard {
     this.elements.main.appendChild(this.elements.keysContainer);
     document.body.appendChild(this.elements.main);
 
-    // Automatically use keyboard for elements with .use-keyboard-input
     document.querySelectorAll('.use-keyboard-input').forEach((element) => {
       element.addEventListener('focus', () => {
         if (!this.properties.isHide) {
@@ -87,7 +86,6 @@ export class Keyboard {
     const fragment = document.createDocumentFragment();
     let keyLayout = [];
 
-    // Creates HTML for an icon
     const createIconHTML = (iconName) => `<i class="material-icons">${iconName}</i>`;
 
     keyLayout = this.properties.isRussian ? keyLayout.concat(Constants.KEY_LAYOUT_RU)
@@ -115,7 +113,6 @@ export class Keyboard {
 
               if (this.properties.shift) this.toggleShift();
 
-              // Set selections
               this.properties.selectionStart = textarea.selectionStart;
               this.properties.selectionEnd = this.properties.selectionStart;
 
@@ -351,18 +348,15 @@ export class Keyboard {
           break;
 
         default:
-          // Create key upper element
           const symbols = key.split('');
           const upperSymbols = document.createElement('div');
           upperSymbols.classList.add('upper__symbols');
 
-          // Create Upper symbol left
           const upperSymbolLeft = document.createElement('div');
           upperSymbolLeft.classList.add('upper__symbols-left', 'key__passive');
           upperSymbolLeft.textContent = symbols[0].toLowerCase();
           upperSymbols.append(upperSymbolLeft);
 
-          // Create Upper symbol right
           const upperSymbolRight = document.createElement('div');
           upperSymbolRight.classList.add('upper__symbols-right');
           upperSymbolRight.textContent = symbols[1].toLowerCase();
@@ -370,7 +364,6 @@ export class Keyboard {
 
           keyElement.append(upperSymbols);
 
-          // Create key lower element
           const lowerSymbol = document.createElement('div');
           lowerSymbol.classList.add('lower__symbol', 'key__active');
           lowerSymbol.textContent = symbols[2].toLowerCase();
@@ -533,11 +526,9 @@ export class Keyboard {
   addLetter(letter) {
     this.properties.value = textarea.value;
 
-    // Set selections
     this.properties.selectionStart = textarea.selectionStart;
     this.properties.selectionEnd = this.properties.selectionStart;
 
-    // Change area
     if (textarea.selectionStart !== textarea.value.length) {
       const arr = this.properties.value.split('');
       arr.splice(this.properties.selectionStart, 0, letter);

@@ -106,10 +106,6 @@ export class Countries {
     }
   }
 
-  // sortCountries() {
-  //   this.countries.sort((a, b) => b.totalConfirmed - a.totalConfirmed);
-  // }
-
   convertNum(num) {
     return `${num}`.replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
   }
