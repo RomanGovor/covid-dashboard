@@ -76,7 +76,6 @@ class Map {
       this.countries.forEach((el) => {
         let size = ((el[key] * 100) / this.globalInfo[key]) * 8;
         size = this.checkMarkerSize(size);
-
         if (el.сountryCoordinates) {
           const marker = this.addMarker(
             el.slug,

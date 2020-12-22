@@ -73,7 +73,7 @@ export const Constants = {
   },
   MARKER_SIZE: {
     min: 8,
-    max: 50,
+    max: 40,
   },
   CHAR_BG_COLOR: [
     'rgba(255, 99, 132, 0.2)',

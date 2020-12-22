@@ -12,27 +12,8 @@
 <div class="wrap">
     <header class="wrapper">
         <div class="header">
-            <div></div>
             <div class="header__logo">
                 <h1 class="title">Covid-19 Dashboard</h1>
-            </div>
-            <div class="header__menu">
-                <div class="burger-menu">
-                    <input type="checkbox" id="hmt" class="burger-menu__checkbox-input">
-                    <label class="burger-menu__lines" for="hmt">
-                        <div class="line line-1"></div>
-                        <div class="line line-2"></div>
-                        <div class="line line-3"></div>
-                    </label>
-                    <div class="header__menu-list">
-                        <ul class="menu-list-ul">
-                            <li class="menu__item active-item">Smt info 1</li>
-                            <li class="menu__item">Smt info 2</li>
-                            <li class="menu__item">Smt info 3</li>
-                            <li class="menu__item">Smt info 4</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
@@ -40,6 +21,7 @@
     <main class="wrapper">
         <div class="container">
             <div class="card container__world">
+                <button class="button button_resize" id="world-resize">&#128270;</button>
                 <div class="subcard container__global">
                     <div class="content">
                         <div class="content__title">Global Cases</div>
@@ -86,6 +68,7 @@
             </div>
 
             <div class="card container__map">
+                <button class="button button_resize" id="map-resize">&#128270;</button>
                 <div class="subcard container__infected-map"></div>
                 <ul class="container__map-buttons">
                     <li class="container__map-button container__map-button_active" category-id="2">Confirmed</li>
@@ -98,6 +81,7 @@
             </div>
 
             <div class="card container__statistics">
+                <button class="button button_resize" id="statistics-resize">&#128270;</button>
                 <div class="container__tables">
                     <div class="subcard container__global-stat">
                         <div class="content">

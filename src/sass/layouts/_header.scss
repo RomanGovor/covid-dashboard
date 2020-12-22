@@ -5,7 +5,11 @@
   height: 68px;
   max-width: $content-width;
   padding: 0 59px;
-
+  
+  &__logo {
+    margin: 0 auto;
+  }
+  
   &__menu {
     cursor: pointer;
   }
@@ -18,7 +22,7 @@
 
   &__switch {
     position: relative;
-    @include size(121px,40px);
+    @include size(121px, 40px);
     border-radius: 25px;
     top: 16px;
   }

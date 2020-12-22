@@ -23,6 +23,7 @@ class App {
     this.currentCountry = '';
     this.delegateTableArrows();
     this.delegateCLickOnCountryList();
+    this.bindResizeButtonsClick();
   }
 
   async initCountries() {
@@ -60,6 +61,7 @@ class App {
         country.newConfirmed = elem.NewConfirmed;
         country.newDeaths = elem.NewDeaths;
         country.totalDeaths = elem.TotalDeaths;
+        country.totalRecovered = elem.TotalRecovered;
         country.newRecovered = elem.NewRecovered;
         country.totalDeaths = elem.TotalDeaths;
         country.slug = elem.Slug;
@@ -182,6 +184,21 @@ class App {
     if (num >= Constants.MAX_COUNT_PAGES_TABLES) return 0;
     if (num < 0) return Constants.MAX_COUNT_PAGES_TABLES - 1;
     return num;
+  }
+
+  bindResizeButtonsClick() {
+    document.querySelector('#world-resize').addEventListener('click', () => {
+      document.querySelector('.container__world').classList.toggle('fullscreen');
+      document.querySelector('header.wrapper').classList.toggle('hidden');
+    });
+    document.querySelector('#map-resize').addEventListener('click', () => {
+      document.querySelector('.container__map').classList.toggle('fullscreen');
+      document.querySelector('header.wrapper').classList.toggle('hidden');
+    });
+    document.querySelector('#statistics-resize').addEventListener('click', () => {
+      document.querySelector('.container__statistics').classList.toggle('fullscreen');
+      document.querySelector('header.wrapper').classList.toggle('hidden');
+    });
   }
 }
 
