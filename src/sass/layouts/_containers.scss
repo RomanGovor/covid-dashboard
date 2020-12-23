@@ -237,6 +237,15 @@
     }
   }
 
+  @media (max-width: $content-hd-width) {
+    &__countries {
+      .list__number,
+      .list__country {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
   @media (max-width: $content-middle-width) {
     &__world {
       width: 99%;
@@ -245,6 +254,13 @@
 
     &__map {
       width: 99%;
+    }
+
+    &__countries {
+      .list__number,
+      .list__country {
+        font-size: 1rem;
+      }
     }
 
     &__statistics {
@@ -278,5 +294,9 @@
   @media (max-width: $content-smallest-width) {
     width: auto;
     padding: 0 29px;
+
+    &__statistics {
+      margin-bottom: 100px;
+    }
   }
 }
