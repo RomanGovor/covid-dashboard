@@ -28,9 +28,9 @@ class Map {
     legend.onAdd = (map) => {
       const div = L.DomUtil.create('div', 'legend');
       div.innerHTML += `<ul style="position: relative; list-style: none; display: flex; background: rgba(255, 255, 255, 0.7); margin: 0; padding: 5px;">
-      <li style="margin-right: 5px;"><img style="position: relative; top: 5px;" src="../assets/images/red-circle.png" width="20" height="20"> - Confirmed</li>
-      <li style="margin-right: 5px;"><img style="position: relative; top: 5px;" src="../assets/images/green-circle.png" width="20" height="20"> - Recovered</li>
-      <li><img style="position: relative; top: 5px;" src="../assets/images/grey-circle.png" width="20" height="20"> - Deaths</li>
+      <li style="margin-right: 5px;"><img style="position: relative; top: 5px;" src="./assets/images/red-circle.png" width="20" height="20"> - Confirmed</li>
+      <li style="margin-right: 5px;"><img style="position: relative; top: 5px;" src="./assets/images/green-circle.png" width="20" height="20"> - Recovered</li>
+      <li><img style="position: relative; top: 5px;" src="./assets/images/grey-circle.png" width="20" height="20"> - Deaths</li>
       </ul>`;
       return div;
     };
@@ -48,7 +48,7 @@ class Map {
     popupText = 'confirmed',
   ) {
     const iconOptions = {
-      iconUrl: `../assets/images/${iconColor}-circle.png`,
+      iconUrl: `./assets/images/${iconColor}-circle.png`,
       iconSize,
     };
     const customIcon = L.icon(iconOptions);
