@@ -16,7 +16,7 @@ class Map {
     this.mapOptions = {
       center: [53.9, 27.5667],
       zoom: 4,
-    };
+    }; /////////
     // eslint-disable-next-line new-cap
     this.map = new L.map(this.container, this.mapOptions);
     const layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
