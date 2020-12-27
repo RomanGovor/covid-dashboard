@@ -91,4 +91,9 @@ export const Constants = {
     'rgba(153, 102, 255, 1)',
     'rgba(255, 159, 64, 1)',
   ],
+  URLS: {
+    summaryInfo: 'https://api.covid19api.com/summary',
+    population: 'https://restcountries.eu/rest/v2/all?fields=name;population;alpha2Code',
+    countryCoordinates: 'https://corona.lmao.ninja/v2/countries',
+  },
 };

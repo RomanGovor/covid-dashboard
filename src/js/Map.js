@@ -9,7 +9,6 @@ class Map {
     this.globalInfo = globalInfo;
     this.markers = [];
     this.initMap();
-    this.bindButtonsEvens();
   }
 
   async initMap() {
@@ -102,20 +101,6 @@ class Map {
     while (markerList.childElementCount !== 0) {
       markerList.removeChild(markerList.firstChild);
     }
-  }
-
-  bindButtonsEvens() {
-    const root = document.querySelector('.container__map-buttons');
-    root.addEventListener('click', (e) => {
-      const categoryIndex = +(e.target.getAttribute('category-id'));
-      this.addMarkersByKey(
-        Constants.TABLES_KEYS[categoryIndex],
-        Constants.CATEGORY_COLORS[categoryIndex],
-        Constants.TABLES_CATEGORY[categoryIndex],
-      );
-      this.removeMapButtonActive();
-      e.target.classList.add('container__map-button_active');
-    });
   }
 
   removeMapButtonActive() {

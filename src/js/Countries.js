@@ -44,8 +44,7 @@ export class Countries {
       const countriesList = document.querySelector('.counties-list');
       this.clearCountriesList();
 
-      for (let i = 0; i < this.countries.length; i++) {
-        const elem = this.countries[i];
+      this.countries.forEach((elem, i) => {
         const country = document.createElement('span');
         country.classList.add('list__item', 'list__interactive');
         country.setAttribute('country', elem.slug);
@@ -61,7 +60,7 @@ export class Countries {
       `;
 
         countriesList.append(country);
-      }
+      });
     }
   }
 

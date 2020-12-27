@@ -23,12 +23,13 @@ class App {
     this.currentCountry = '';
     this.delegateTableArrows();
     this.delegateCLickOnCountryList();
+    this.delegateMapButtons();
     this.bindResizeButtonsClick();
   }
 
   async initCountries() {
-    const response1 = await fetch('https://api.covid19api.com/summary');
-    const response2 = await fetch('https://restcountries.eu/rest/v2/all?fields=name;population;alpha2Code');
+    const response1 = await fetch(Constants.URLS.summaryInfo);
+    const response2 = await fetch(Constants.URLS.population);
 
     if (response1.ok && response2.ok) {
       const data = await response1.json();
@@ -45,7 +46,7 @@ class App {
   }
 
   async getCountriesArray(data, population) {
-    const response = await fetch('https://corona.lmao.ninja/v2/countries');
+    const response = await fetch(Constants.URLS.countryCoordinates);
     const points = [];
     const pointsCode = [];
     if (response.ok) {
@@ -155,6 +156,27 @@ class App {
         const coords = this.COUNTRIES.countries[this.indexActiveCountry].сountryCoordinates;
         if (coords) this.MAP.move(coords);
       }
+    });
+  }
+
+  delegateMapButtons() {
+    const root = document.querySelector('.container__map-buttons');
+    root.addEventListener('click', (e) => {
+      const categoryIndex = +(e.target.getAttribute('category-id'));
+      this.MAP.addMarkersByKey(
+        Constants.TABLES_KEYS[categoryIndex],
+        Constants.CATEGORY_COLORS[categoryIndex],
+        Constants.TABLES_CATEGORY[categoryIndex],
+      );
+      this.MAP.removeMapButtonActive();
+      this.globalTableIndex = categoryIndex;
+      this.relativeTableIndex = categoryIndex;
+
+      const keyRelative = Extra.getKeyByIndex(this.relativeTableIndex);
+      const keyGlobal = Extra.getKeyByIndex(this.globalTableIndex);
+      this.TABLES.renderTableState(true, keyRelative, this.currentCountry);
+      this.TABLES.renderTableState(false, keyGlobal, this.currentCountry);
+      e.target.classList.add('container__map-button_active');
     });
   }
 

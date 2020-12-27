@@ -451,10 +451,12 @@ export class Keyboard {
           key.classList.toggle('key__disabled');
         } else if (key.childElementCount === 2) {
           key.firstChild.firstChild.classList.toggle('key__disabled');
-          key.lastChild.classList.toggle('key__disabled');
         } else {
           key.classList.toggle('key__disabled');
           key.firstChild.classList.toggle('key__disabled');
+        }
+
+        if (key.childElementCount >= 2) {
           key.lastChild.classList.toggle('key__disabled');
         }
 
