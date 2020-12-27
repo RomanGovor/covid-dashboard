@@ -12,11 +12,15 @@
     "import/prefer-default-export": "off",
     "no-param-reassign": "off",
     "linebreak-style": "off",
-    "no-case-declarations": "off"
+    "no-case-declarations": "off",
+    "no-underscore-dangle": "off",
+    "new-cap": "off"
   },
   "env": {
     "es6": true,
     "browser": true
   },
-  "extends": ["airbnb"]
+  "extends": [
+    "airbnb"
+  ]
 }

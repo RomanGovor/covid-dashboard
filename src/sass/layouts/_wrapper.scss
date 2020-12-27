@@ -3,9 +3,9 @@
   max-width: $content-width;
 }
 
-.fullscreen {
-  width: 100vw !important;
-  height: 100vh !important;
+.wrapper .fullscreen {
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;

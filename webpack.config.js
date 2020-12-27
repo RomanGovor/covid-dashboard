@@ -12,12 +12,14 @@ module.exports = (env, options) => {
   const devtool = isProduction ? false : 'source-map';
 
   const jsLoaders = () => {
-    const loaders = [{
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env'],
+    const loaders = [
+      {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+        },
       },
-    }];
+    ];
 
     if (!isProduction) {
       loaders.push('eslint-loader');
@@ -31,7 +33,6 @@ module.exports = (env, options) => {
     watch: !isProduction,
     entry: ['./src/index.js', './src/sass/style.scss'],
     output: {
-      // publicPath: ASSET_PATH,
       publicPath: '',
       path: path.join(__dirname, '/dist'),
       filename: 'script.js',
@@ -47,9 +48,7 @@ module.exports = (env, options) => {
         },
         {
           test: /\.scss$/,
-          use: [
-            MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
-          ],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         },
         {
           test: /\.css$/,
@@ -92,9 +91,7 @@ module.exports = (env, options) => {
         'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
       }),
       new CopyPlugin({
-        patterns: [
-          { from: 'src/assets', to: 'assets' },
-        ],
+        patterns: [{ from: 'src/assets', to: 'assets' }],
         options: {
           concurrency: 100,
         },

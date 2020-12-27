@@ -16,7 +16,7 @@ class Charts {
     this.countries = [...countries.sort((a, b) => b.totalConfirmed - a.totalConfirmed)];
     this.globalInfo = globalInfo;
 
-    this.bindButtonsEvens();
+    this.bindButtonsEvents();
     this.indexPositionCountries = 0;
     this.currentCategoryIndex = 2;
   }
@@ -46,7 +46,9 @@ class Charts {
     this.currentActiveCountry = fullName;
 
     if (fullName !== '') {
-      const response = await fetch(`https://disease.sh/v3/covid-19/historical/${country}?lastdays=100`);
+      const response = await fetch(
+        `https://disease.sh/v3/covid-19/historical/${country}?lastdays=100`,
+      );
       if (response.ok) {
         const data = await response.json();
         this.updateTimelineInfoByCountry(data);
@@ -70,39 +72,51 @@ class Charts {
   }
 
   update(
-    data = this.globalTimelineData.slice(-100)
+    data = this.globalTimelineData
+      .slice(-Constants.CHAR_POINTS_NUMBER)
       .map((element) => element.totalConfirmed),
-    labels = this.globalTimelineData.slice(-100)
+    labels = this.globalTimelineData
+      .slice(-Constants.CHAR_POINTS_NUMBER)
       .map((element) => element.dateUpdate.slice(0, 10)),
     label = `${Constants.TABLES_CATEGORY[this.currentCategoryIndex]}`,
     type = 'line',
     categoryIndex = 2,
   ) {
+    console.log('data = ', data, labels);
     const chartConfig = {
       type,
       data: {
         labels,
-        datasets: [{
-          data,
-          backgroundColor: Constants.CHAR_BG_COLOR,
-          borderColor: Constants.CHAR_BORDER_COLOR,
-          borderWidth: 1,
-        }],
+        datasets: [
+          {
+            data,
+            backgroundColor: Constants.CHAR_BG_COLOR,
+            borderColor: Constants.CHAR_BORDER_COLOR,
+            borderWidth: 1,
+          },
+        ],
       },
       options: {
+        lineTension: 3,
         scales: {
-          yAxes: [{
-            ticks: {
-              fontColor: Constants.CATEGORY_COLORS[categoryIndex],
-              beginAtZero: true,
+          yAxes: [
+            {
+              ticks: {
+                fontColor: 'white',
+                beginAtZero: true,
+              },
             },
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: 'white',
-              fontSize: 6,
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: 'white',
+                fontSize: 8,
+                maxTicksLimit: Constants.CHAR_POINTS_NUMBER,
+                stepSize: 1,
+              },
             },
-          }],
+          ],
         },
         legend: {
           display: false,
@@ -122,13 +136,13 @@ class Charts {
     this.chart = new Chart(this.container, chartConfig);
   }
 
-  bindButtonsEvens() {
+  bindButtonsEvents() {
     const list = document.querySelector('.container__graphics-buttons');
     list.addEventListener('click', (e) => {
       if (e.target.classList.contains('container__graphics-button')) {
         this.removeMapButtonActive();
         e.target.classList.add('container__graphics-button_active');
-        this.currentCategoryIndex = +(e.target.getAttribute('category-id'));
+        this.currentCategoryIndex = +e.target.getAttribute('category-id');
       }
       this.checkOnActiveCountry();
     });
@@ -137,9 +151,11 @@ class Charts {
   checkOnActiveCountry() {
     if (this.currentActiveCountry === '') {
       this.update(
-        this.globalTimelineData.slice(-100)
+        this.globalTimelineData
+          .slice(-Constants.CHAR_POINTS_NUMBER)
           .map((element) => element[Constants.TABLES_KEYS[this.currentCategoryIndex]]),
-        this.globalTimelineData.slice(-100)
+        this.globalTimelineData
+          .slice(-Constants.CHAR_POINTS_NUMBER)
           .map((element) => element.dateUpdate.slice(0, 10)),
         `${Constants.TABLES_CATEGORY[this.currentCategoryIndex]}`,
         'line',
@@ -147,8 +163,9 @@ class Charts {
       );
     } else {
       this.update(
-        this.timelineCountry
-          .map((element) => element[Constants.TABLES_KEYS[this.currentCategoryIndex]]),
+        this.timelineCountry.map(
+          (element) => element[Constants.TABLES_KEYS[this.currentCategoryIndex]],
+        ),
         this.timelineCountry.map((element) => element.dateUpdate),
         `${Constants.TABLES_CATEGORY[this.currentCategoryIndex]} ( ${this.currentActiveCountry} )`,
         'line',
