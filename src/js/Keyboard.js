@@ -50,7 +50,7 @@ export class Keyboard {
   }
 
   init() {
-    this.elements.main = document.createElement('div');
+    this.elements.main = document.createElement('section');
     this.elements.keysContainer = document.createElement('div');
 
     this.elements.main.classList.add('keyboard', 'keyboard__hidden');

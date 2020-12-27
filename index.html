@@ -156,7 +156,12 @@
             <section class="container__keyboard">
                 <script>
                   document.onclick = function(event) {
-                    document.getElementById("textarea").focus();
+                    const input = document.querySelector('#textarea');
+
+                    if(event.target === input || event.target.closest('section').classList.contains('keyboard')) {
+                      document.getElementById("textarea").focus();
+                    }
+                    else document.getElementById("textarea").blur();
                   };
                 </script>
             </section>
