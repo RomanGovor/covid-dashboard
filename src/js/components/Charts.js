@@ -1,11 +1,11 @@
 import Chart from 'chart.js';
-import { Constants } from './Constants';
-import { Extra } from './Extra';
+import { Constants } from '../core/Constants';
+import { Extra } from '../core/services/Extra';
 import { Countries } from './Countries';
 import { Tables } from './Tables';
 import Map from './Map';
 
-class Charts {
+export class Charts {
   constructor(countries, globalInfo) {
     this.globalTimelineData = [];
     this.timelineCountry = [];
@@ -181,5 +181,3 @@ class Charts {
     });
   }
 }
-
-export default Charts;

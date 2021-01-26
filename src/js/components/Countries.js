@@ -1,4 +1,4 @@
-import { Extra } from './Extra';
+import { Extra } from '../core/services/Extra';
 
 export class Countries {
   constructor(countries, globalInfo) {

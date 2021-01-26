@@ -1,4 +1,4 @@
-import { Constants } from './Constants';
+import { Constants } from '../core/Constants';
 
 const textarea = document.getElementById('textarea');
 const keyboardLetters = {

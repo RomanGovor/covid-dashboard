@@ -1,8 +1,8 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Constants } from './Constants';
+import { Constants } from '../core/Constants';
 
-class Map {
+export class Map {
   constructor(countries, globalInfo) {
     this.container = document.querySelector('.container__infected-map');
     this.countries = [...countries];
@@ -130,5 +130,3 @@ class Map {
     popup.openPopup();
   }
 }
-
-export default Map;

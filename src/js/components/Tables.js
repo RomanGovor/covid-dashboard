@@ -1,5 +1,5 @@
-import { Extra } from './Extra';
-import { Constants } from './Constants';
+import { Extra } from '../core/services/Extra';
+import { Constants } from '../core/Constants';
 
 export class Tables {
   constructor(countries, globalInfo) {

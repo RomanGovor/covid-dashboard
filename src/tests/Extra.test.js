@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { Extra } from '../js/Extra';
+import { Extra } from '../js/core/services/Extra';
 
 describe('Extra', () => {
   let mockCountries;

@@ -1,10 +1,7 @@
-import { Countries } from './js/Countries';
-import { Tables } from './js/Tables';
-import { Constants } from './js/Constants';
-import { Extra } from './js/Extra';
-import Map from './js/Map';
-import { Keyboard } from './js/Keyboard';
-import Charts from './js/Charts';
+import {
+  Countries, Tables, Map, Charts, Keyboard,
+} from './js/components/index';
+import { Constants, Extra } from './js/core/index';
 
 class App {
   constructor() {
