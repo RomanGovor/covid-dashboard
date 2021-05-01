@@ -1,0 +1,16 @@
+
+.leaflet-bottom .leaflet-left {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.leaflet-bottom > .legend {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.legend .leaflet-control {
+  padding: 0;
+  margin: 0;
+}

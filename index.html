@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Dashboard</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,500;0,800;1,100;1,200;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+    <header class="wrapper">
+        <div class="header">
+            <div class="header__logo">
+                <h1 class="title">Covid-19 Dashboard</h1>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <div class="container">
+            <div class="card container__world">
+                <button class="button button_resize" id="world-resize">&#128270;</button>
+                <div class="subcard container__global">
+                    <div class="content">
+                        <div class="content__title">Global Cases</div>
+                        <div class="content__number global-cases">0</div>
+                    </div>
+                </div>
+                <div class="subcard container__countries">
+                    <div class="content">
+                        <div class="content direction-row justify-around width90">
+                            <div class="content__small-title">Cases by Country</div>
+                        </div>
+                        <div class="content width90">
+                            <input id="textarea" class="use-keyboard-input input width90" placeholder="Country">
+                        </div>
+                    </div>
+                    <div class="content overflow-list">
+                        <div class="content__list">
+                            <nav class="list counties-list">
+                                <span class="list__item">
+                                    <div class="list__inner-block">
+                                        <div class="list__number">2&nbsp;345&nbsp;678</div>
+                                        <span>&nbsp;</span>
+                                        <div class="list__country">United Kingdom</div>
+                                    </div>
+                                </span>
+                                <span class="list__item">
+                                    <div class="list__inner-block">
+                                        <div class="list__number">22&nbsp;345&nbsp;678</div>
+                                        <span>&nbsp;</span>
+                                        <div class="list__country">Russia</div>
+                                    </div>
+                                </span>
+                                <span class="list__item">
+                                    <div class="list__inner-block">
+                                        <div class="list__number">45&nbsp;678</div>
+                                        <span>&nbsp;</span>
+                                        <div class="list__country">China</div>
+                                    </div>
+                                </span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card container__map">
+                <button class="button button_resize" id="map-resize">&#128270;</button>
+                <div class="subcard container__infected-map"></div>
+                <ul class="container__map-buttons">
+                    <li class="container__map-button container__map-button_active" category-id="2">Confirmed</li>
+                    <li class="container__map-button" category-id="1">Recovered</li>
+                    <li class="container__map-button" category-id="0">Deaths</li>
+                    <li class="container__map-button" category-id="5">Daily Confirmed</li>
+                    <li class="container__map-button" category-id="4">Daily Recovered</li>
+                    <li class="container__map-button" category-id="3">Daily Deaths</li>
+                </ul>
+            </div>
+
+            <div class="card container__statistics">
+                <button class="button button_resize" id="statistics-resize">&#128270;</button>
+                <div class="container__tables">
+                    <div class="subcard container__global-stat">
+                        <div class="content">
+                            <div class="content__title global-title">Global Deaths</div>
+                            <div class="content__number global-num">0</div>
+                        </div>
+                        <div class="content overflow-tables">
+                            <div class="content__list">
+                                <nav class="list global-list">
+                                    <span class="list__item">
+                                        <div class="list__inner-block direction-column">
+                                            <div class="direction-row">
+                                                <div class="list__number">0</div>
+                                                <span>&nbsp;</span>
+                                                <div class="list__addition">recommended</div>
+                                            </div>
+                                            <div class="list__country">United Kingdom</div>
+                                        </div>
+                                    </span>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="content container__buttons">
+                            <div class="direction-row slider global-buttons">
+                                <button class="slider__arrow arrow-left">&#9668;</button>
+                                <div class="slider__title">Total Deaths</div>
+                                <button class="slider__arrow arrow-right">&#9658;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subcard container__relative-stat">
+                        <div class="content">
+                            <div class="content__title relative-title">Total Deaths</div>
+                            <div class="content__title">per 100k</div>
+                        </div>
+                        <div class="content overflow-tables">
+                            <div class="content__list">
+                                <nav class="list relative-list">
+                                    <span class="list__item">
+                                        <div class="list__inner-block direction-column">
+                                            <div class="direction-row">
+                                                <div class="list__number color-blue">0</div>
+                                                <span>&nbsp;</span>
+                                                <div class="list__addition color-blue">recommended</div>
+                                            </div>
+                                            <div class="list__country">United Kingdom</div>
+                                        </div>
+                                    </span>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="content container__buttons">
+                            <div class="direction-row slider relative-buttons">
+                                <button class="slider__arrow arrow-left">&#9668;</button>
+                                <div class="slider__title">Total Deaths</div>
+                                <button class="slider__arrow arrow-right">&#9658;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subcard container__graphics">
+                    <canvas class="container__charts" id="myChart"></canvas>
+                    <ul class="container__graphics-buttons">
+                        <li class="container__graphics-button container__graphics-button_active" category-id="2">Confirmed</li>
+                        <li class="container__graphics-button" category-id="1">Recovered</li>
+                        <li class="container__graphics-button" category-id="0">Deaths</li>
+                    </ul>
+                </div>
+            </div>
+
+            <section class="container__keyboard">
+                <script>
+                  document.onclick = function(event) {
+                    const input = document.querySelector('#textarea');
+
+                    if(event.target === input || event.target.closest('section').classList.contains('keyboard')) {
+                      document.getElementById("textarea").focus();
+                    }
+                    else document.getElementById("textarea").blur();
+                  };
+                </script>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer wrapper">
+            <div class="footer__author">
+                <a href="https://github.com/RomanGovor" target="#">Author 1</a>
+                <a href="https://github.com/ssamvelk" target="#">Author 2</a>
+            </div>
+            <div class="footer__logo"><img src="./assets/icons/rs_school_js.svg" alt="rs-logo"></div>
+            <div class="footer__courses"><a href="https://rs.school/js/" target="#">JS courses</a></div>
+            <div>2020</div>
+        </div>
+    </footer>
+</div>
+    <script type="module" src="src/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+.subcard {
+  height: 100%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  background: $color-subcard;
+  margin: 10px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title,
+    &__number {
+      line-height: 60px;
+    }
+
+    &__small-title,
+    &__title {
+      text-align: center;
+      font-size: 2rem;
+      color: $color-light;
+    }
+
+    &__small-title {
+      padding-top: 10px;
+      font-size: 1rem;
+    }
+
+    &__number {
+      font-weight: bold;
+      font-size: 2.8rem;
+      color: $color-red;
+    }
+
+    &__list {
+      margin-top: 5px;
+      color: $color-light;
+      height: 90%;
+    }
+  }
+
+  .color-recovered {
+    color: $color-recovered;
+  }
+
+  .color-deaths {
+    color: $color-light;
+  }
+
+  .color-confirmed {
+    color: $color-red;
+  }
+
+  .direction-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .direction-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .justify-around {
+    justify-content: space-around;
+  }
+
+  .width90 {
+    width: 90%;
+  }
+
+  @media (max-width: $content-big-width) {
+    .content {
+      &__title {
+        font-size: 1.5rem;
+      }
+
+      &__number {
+        font-size: 2.4rem;
+      }
+    }
+  }
+
+  @media (max-width: $content-hd-width) {
+    .content {
+      &__title {
+        font-size: 1.2rem;
+      }
+
+      &__number {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  @media (max-width: $content-middle-width) {
+    .content {
+      &__title {
+        font-size: 1.5rem;
+      }
+
+      &__number {
+        font-size: 2.4rem;
+      }
+    }
+  }
+}

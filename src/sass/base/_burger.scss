@@ -1,0 +1,47 @@
+.burger-menu {
+  &__checkbox-input {
+    display: none;
+  }
+
+  &__lines {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    margin-right: 4vw;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    transition: all .4s linear .1s;
+    position: relative;
+    z-index: 4;
+
+    .line-1, .line-2, .line-3 {
+      border-bottom: 4px solid $color-black;
+      border-radius: 20%;
+      width: 40px;
+      transition: all .4s linear .1s;
+    }
+
+    .line-2, .line-3 {
+      padding-top: 8px;
+    }
+  }
+
+  &__checkbox-input:checked ~ .header__menu-list {
+    right: 0;
+  }
+
+  &__checkbox-input:checked ~ &__lines {
+    .line-1 {
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg) translate(6px, 10px);
+    }
+    .line-2 {
+      opacity: 0;
+    }
+    .line-3 {
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg) translate(6px, -9px);
+    }
+  }
+}

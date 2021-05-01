@@ -1,0 +1,24 @@
+.card {
+  position: relative;
+  width: calc(100% / 3 - 10px);
+  margin-bottom: 10px;
+  height: 580px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+
+  @media (max-width: $content-big-width) {
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: $content-middle-width) {
+    width: calc(100% / 2 - 10px);
+  }
+
+  @media (max-width: $content-little-width) {
+    width: 100%;
+  }
+}

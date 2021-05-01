@@ -1,0 +1,26 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 12
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "class-methods-use-this": "off",
+    "no-plusplus": "off",
+    "no-new": "warn",
+    "no-restricted-syntax": "warn",
+    "import/prefer-default-export": "off",
+    "no-param-reassign": "off",
+    "linebreak-style": "off",
+    "no-case-declarations": "off",
+    "no-underscore-dangle": "off",
+    "new-cap": "off"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": [
+    "airbnb"
+  ]
+}

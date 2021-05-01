@@ -1,0 +1,36 @@
+.wrapper {
+  margin: 0 auto;
+  max-width: $content-width;
+}
+
+.wrapper .fullscreen {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+
+  .overflow-list {
+    max-height: 100%;
+  }
+
+  .container__tables {
+    height: 50%;
+  }
+
+  .overflow-tables {
+    max-height: 75%;
+    min-height: 190px;
+    height: auto;
+  }
+
+  .container__graphics {
+    height: auto;
+    max-height: 50%;
+  }
+}
+
+.hidden {
+  display: none;
+}
